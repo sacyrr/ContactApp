@@ -1,42 +1,49 @@
-//
+ //
 //  CoreDataStack.swift
-//  ImageViewer
+//  ContactApp
 //
-//  Created by Pasan Premaratne on 9/26/17.
-//  Copyright © 2017 Treehouse. All rights reserved.
+//  Created by Sachin on 10/05/18.
+//  Copyright © 2018 Sachin. All rights reserved.
 //
 
 import Foundation
 import CoreData
-
-class CoreDataStack {
-    
-    lazy var managedObjectContext: NSManagedObjectContext = {
+class CoreDataStack{
+    //Registering managed object with managedobjectcontext
+    lazy var managedObjectContext : NSManagedObjectContext = {
+        //        let coordinator = self.persistentStoreCoordinator
+        //        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        //        moc.persistentStoreCoordinator = coordinator
+        //        return moc
+        
         let container = self.persistentContainer
         return container.viewContext
     }()
     
-    private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "ImageViewer")
-        container.loadPersistentStores() { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error: \(error), \(error.userInfo)")
+  
+    lazy var persistentContainer : NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ContactApp")
+        container.loadPersistentStores(){storeDescription , error in
+            if let error = error as NSError?{
+                fatalError("Unresolved Error : \(error) \(error.userInfo)")
             }
         }
-        
         return container
     }()
+    
+    
 }
 
-extension NSManagedObjectContext {
-    func saveChanges() {
-        if self.hasChanges {
+extension NSManagedObjectContext
+{
+    //To save changes
+    func saveChanges(){
+        if self.hasChanges{
             do {
                 try save()
-            } catch {
-                fatalError("Error: \(error.localizedDescription)")
+            }catch{
+                fatalError("Error : \(error.localizedDescription)")
             }
         }
     }
 }
-

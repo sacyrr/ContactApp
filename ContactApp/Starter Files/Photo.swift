@@ -9,7 +9,10 @@
 import CoreData
 import UIKit
 
-public class Photo: NSManagedObject {}
+public class Photo: NSManagedObject {
+    @NSManaged public var creationDate: NSDate
+    @NSManaged public var imageData: NSData
+}
 
 extension Photo {
     static var entityName: String {
@@ -17,7 +20,7 @@ extension Photo {
     }
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Photo> {
-        let request = NSFetchRequest<Photo>(entityName: "Photo")
+        let request = NSFetchRequest<Photo>(entityName: "ContactDBC")
         request.sortDescriptors = []
         return request
     }

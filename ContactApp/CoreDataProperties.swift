@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension ContactDB {
+extension ContactDBC {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ContactDB> {
-        let request = NSFetchRequest<ContactDB>(entityName: "ContactDB")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ContactDBC> {
+        let request = NSFetchRequest<ContactDBC>(entityName: "ContactDBC")
         request.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
         return request
     }
@@ -27,6 +27,6 @@ extension ContactDB {
     @NSManaged public var city: String?
     @NSManaged public var state: String?
     @NSManaged public var zip: String?
-    @NSManaged public var avatarName: String?
+   
 
 }

@@ -7,29 +7,42 @@
 //
 
 import UIKit
+import CoreData
 
+var contact : ContactDBC?
+var context : NSManagedObjectContext!
 class DetailContactViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view, typically from a nib.
+        configureView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func configureView() {
+        // Update the user interface for the detail item.
+        //if let detail = detailVC {
+            if let contact = contact {
+                nameLabel.text = contact.firstName!
+            }
+       // }
     }
-    */
+    
+   
+    
+    var detailVC: ContactDBC? {
+        didSet {
+            // Update the view.
+            configureView()
+        }
+    }
+
 
 }

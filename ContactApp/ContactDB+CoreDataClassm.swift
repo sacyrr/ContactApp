@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class ContactDBc: NSManagedObject {
+public class ContactDBC: NSManagedObject {
 
 }
